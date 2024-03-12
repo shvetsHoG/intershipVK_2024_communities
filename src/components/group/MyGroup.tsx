@@ -53,7 +53,7 @@ const MyGroup: FC<Group> = ({id, closed, name, friends, members_count, avatar_co
             </SimpleCell>
             {friends?.length &&
                 <div className={classList.join(" ")}>
-                    {friends.map(friend => <div>{friend.first_name} {friend.last_name}</div>)}
+                    {friends.map(friend => <div key={`${friend.first_name}${friend.last_name}`}>{friend.first_name} {friend.last_name}</div>)}
                 </div>
             }
         </Tappable>

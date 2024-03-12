@@ -1,5 +1,4 @@
-import React, {useEffect, useState} from 'react';
-import {Group} from "@vkontakte/vkui";
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import classes from "./Filter.module.css";
 import {setFilteredGroups} from "../../store/slices/GroupsReducer.ts";
@@ -32,7 +31,7 @@ const AvatarFilter = () => {
 
     return (
         <select className={classes.wrapper} name="" id="" onChange={(event) => setValue(event.target.value)}>
-            {options.map(option => <option value={option}>{option}</option>)}
+            {options.map(option => <option key={option} value={option}>{option}</option>)}
         </select>
     );
 };

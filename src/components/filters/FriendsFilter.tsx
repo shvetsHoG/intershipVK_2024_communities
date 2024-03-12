@@ -1,27 +1,28 @@
-import {useEffect, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import classes from "./Filter.module.css";
 import {setFilteredGroups} from "../../store/slices/GroupsReducer.ts";
+import {Consts} from "../../consts/Consts.ts";
 
-const FriendsFilter = () => {
+const FriendsFilter: FC = () => {
 
     const [value, setValue] = useState("")
-    const options = ["все","есть друзья", "нет друзей"]
+    const options: Consts[] = [Consts.ALL,Consts.HAVE_FRIENDS, Consts.NO_FRIENDS]
 
     const groups: Group[] = useSelector(state => state.groups.groups)
     const dispatch = useDispatch();
 
     const changeGroups = () => {
         switch (value) {
-            case "все": {
+            case Consts.ALL: {
                 dispatch(setFilteredGroups([...groups]))
                 break;
             }
-            case "есть друзья": {
+            case Consts.HAVE_FRIENDS: {
                 dispatch(setFilteredGroups([...groups].filter(group => group.friends?.length)))
                 break;
             }
-            case "нет друзей" : {
+            case Consts.NO_FRIENDS: {
                 dispatch(setFilteredGroups([...groups].filter(group => !group.friends?.length)))
                 break;
             }

@@ -4,12 +4,14 @@ interface GroupState {
     loading?: boolean
     groups?: Group[]
     filteredGroups?: Group[]
+    groupsForFiltering?: Group[]
 }
 
 const initialState: GroupState = {
     loading: true,
     groups: [],
     filteredGroups: [],
+    groupsForFiltering: [],
 }
 
 const GroupsReducer = createSlice({
@@ -22,11 +24,14 @@ const GroupsReducer = createSlice({
         setFilteredGroups: (state, {payload}) => {
             state.filteredGroups = payload
         },
+        setGroupsForFiltering: (state, {payload}) => {
+            state.groupsForFiltering = payload
+        },
         setLoading: (state) => {
             state.loading = false
-        }
+        },
     }
 })
 
 export default GroupsReducer.reducer
-export const {setGroups, setFilteredGroups, setLoading} = GroupsReducer.actions
+export const {setGroups, setFilteredGroups, setLoading, setGroupsForFiltering} = GroupsReducer.actions

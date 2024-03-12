@@ -1,4 +1,4 @@
-import {FC, useEffect, useState} from 'react';
+import {FC, useState} from 'react';
 import {Avatar, IconButton, SimpleCell, Tappable} from "@vkontakte/vkui";
 import {Icon48ChevronDownOutline} from "@vkontakte/icons";
 import classes from "./MyGroup.module.css"
@@ -7,6 +7,7 @@ const MyGroup: FC<Group> = ({id, closed, name, friends, members_count, avatar_co
 
     let classList = [classes.friendList]
     const [visible, setVisible] = useState(false)
+
     const groupClosedHandler = (closed: boolean) => {
         if (closed) {
             return "Закрытая группа"
@@ -53,7 +54,7 @@ const MyGroup: FC<Group> = ({id, closed, name, friends, members_count, avatar_co
             </SimpleCell>
             {friends?.length &&
                 <div className={classList.join(" ")}>
-                    {friends.map(friend => <div key={`${friend.first_name}${friend.last_name}`}>{friend.first_name} {friend.last_name}</div>)}
+                    {friends.map(friend => <div key={id}>{friend.first_name} {friend.last_name}</div>)}
                 </div>
             }
         </Tappable>

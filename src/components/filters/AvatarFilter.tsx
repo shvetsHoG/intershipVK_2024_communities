@@ -1,15 +1,15 @@
-import {useEffect, useState} from 'react';
+import {FC, useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import classes from "./Filter.module.css";
 import {setFilteredGroups} from "../../store/slices/GroupsReducer.ts";
 
-const AvatarFilter = () => {
+const AvatarFilter: FC = () => {
 
     const [value, setValue] = useState("")
     const groups: Group[] = useSelector(state => state.groups.groups)
     const dispatch = useDispatch();
 
-    const options = ["любой"]
+    const options: string[] = ["любой"]
 
     groups.forEach(group => {
         if (group.avatar_color && !options.includes(group.avatar_color)) {

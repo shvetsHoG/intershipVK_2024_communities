@@ -55,7 +55,7 @@ function App() {
                                 <AvatarFilter/>
                                 <FriendsFilter/>
                             </Group>
-                            <Group header={<Header mode="secondary">Список групп</Header>}>
+                            <Group header={<Header mode="secondary">Поиск по группам</Header>}>
                                 <Input/>
                             </Group>
                             <Group header={<Header mode="secondary">Список групп</Header>}>

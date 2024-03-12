@@ -2,10 +2,12 @@ import {createSlice} from "@reduxjs/toolkit";
 
 interface GroupState {
     groups?: Group[]
+    filteredGroups?: Group[]
 }
 
 const initialState: GroupState = {
-    groups: []
+    groups: [],
+    filteredGroups: [],
 }
 
 const GroupsReducer = createSlice({
@@ -14,9 +16,12 @@ const GroupsReducer = createSlice({
     reducers: {
         setGroups: (state, {payload}) => {
             state.groups = payload
+        },
+        setFilteredGroups: (state, {payload}) => {
+            state.filteredGroups = payload
         }
     }
 })
 
 export default GroupsReducer.reducer
-export const {setGroups} = GroupsReducer.actions
+export const {setGroups, setFilteredGroups} = GroupsReducer.actions

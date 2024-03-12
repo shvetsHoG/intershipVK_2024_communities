@@ -10,10 +10,14 @@ import {
     View
 } from "@vkontakte/vkui";
 import {GetGroupsResponse} from "./API/GroupService.ts";
-import {useEffect} from "react";
-import {setGroups} from "./store/slices/GroupsReducer.ts";
+import {useEffect, useMemo, useState} from "react";
+import {setFilteredGroups, setGroups} from "./store/slices/GroupsReducer.ts";
 import {useDispatch, useSelector} from "react-redux";
-import MyGroup from "./components/MyGroup.tsx";
+import MyGroup from "./components/group/MyGroup.tsx";
+import Input from "./components/input/Input.tsx";
+import PrivacyFilter from "./components/filters/PrivacyFilter.tsx";
+import AvatarFilter from "./components/filters/AvatarFilter.tsx";
+import FriendsFilter from "./components/filters/FriendsFilter.tsx";
 
 
 function App() {
@@ -23,11 +27,12 @@ function App() {
         async function fetchData() {
             const data = await GetGroupsResponse().then(data => data.data);
             dispatch(setGroups(data))
+            dispatch(setFilteredGroups(data))
         }
         fetchData();
     }, [])
+    const filteredGroups: Group[] = useSelector(state => state.groups.filteredGroups)
 
-    const groups: Group[] = useSelector(state => state.groups.groups)
 
     return (
         <AppRoot>
@@ -36,8 +41,12 @@ function App() {
                     <View activePanel="main">
                         <Panel id="main">
                             <PanelHeader>Профильное задание на стажера ВК</PanelHeader>
+                            <PrivacyFilter/>
+                            <AvatarFilter/>
+                            <FriendsFilter/>
+                            <Input/>
                             <Group header={<Header mode="secondary">Список групп</Header>}>
-                                {groups.map(group => <MyGroup key={group.id} {...group}></MyGroup>)}
+                                {filteredGroups.map(group => <MyGroup key={group.id} {...group}></MyGroup>)}
                             </Group>
                         </Panel>
                     </View>

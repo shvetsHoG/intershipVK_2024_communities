@@ -16,11 +16,11 @@ const MyGroup: FC<Group> = ({id, closed, name, friends, members_count, avatar_co
 
     const groupMembersHandler = () => {
         return <div className={classes.friendsWrapper}>
-            <div className={classes.friends}>{members_count} участников</div>
+            <button className={classes.friends}>{members_count} участников</button>
             {friends?.length
-                && <div className={classes.friends} onClick={() => toggleFriendsVisible()}>
+                && <button className={classes.friends} onClick={() => toggleFriendsVisible()}>
                     {friends.length} друзей
-            </div>
+            </button>
             }
         </div>
     }
@@ -42,8 +42,8 @@ const MyGroup: FC<Group> = ({id, closed, name, friends, members_count, avatar_co
             <SimpleCell
                 style={{marginBottom:"10px"}}
                 before={<Avatar size={88} style={{backgroundColor: avatar_color}}></Avatar>}
-                after={
-                    <IconButton label="Развернуть список">
+                after={friends?.length
+                    &&<IconButton onClick={() => toggleFriendsVisible()} label="Развернуть список">
                         <Icon48ChevronDownOutline/>
                     </IconButton>}
                 subhead={groupClosedHandler(closed)}

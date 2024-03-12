@@ -5,6 +5,9 @@
 }
 
 .friends {
+    padding: 0;
+    border: none;
+    background: none;
     cursor: pointer;
     font-size: 16px;
     transition: 0.2s;

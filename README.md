@@ -10,6 +10,8 @@ git clone https://github.com/shvetsHoG/intershipVK_2024_communities.git
 2. Перейти в папку проекта и установить нужные зависимости
 ```
 cd intershipVK_2024_communities
+```
+```
 npm i
 ```
 3. Запустить проект на локальном хосте в режиме разработчика

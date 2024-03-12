@@ -1,0 +1,23 @@
+.friendsWrapper{
+    padding: 2px 0;
+    display: flex;
+    gap: 5px;
+}
+
+.friends {
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.2s;
+}
+
+.friends:hover {
+    color: #555581;
+}
+
+.friendList {
+    display: none;
+}
+
+.active{
+    display: block;
+}
